@@ -5,16 +5,16 @@ import java.sql.*;
  */
 public class JDBC {
     public static void main(String[] args) {
-        String url="jdbc:mysql://localhost:3306/tutorial";
+        String url="jdbc:mariadb://localhost:3306/tutorial";
         String username="root";
-        String password="22062001lll";
+        String password="0182973Job";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
             Connection connection= DriverManager.getConnection(url, username, password);
             Statement statement=connection.createStatement();
-            ResultSet resultSet=statement.executeQuery("SELECT * FROM employee");
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM employees");
             while (resultSet.next()){
-                System.out.println(resultSet.getString(2));
+                System.out.println("Name: "+ resultSet.getString(2) + ", " + "Skill: " + resultSet.getString(3));
             }
             resultSet.close();
             statement.close();
